@@ -2,6 +2,11 @@
 
 #include "array.c"
 
+// 打印数组的自定义函数
+void print(const void *obj) {
+  printf("%d ", *(int *) obj);
+}
+
 // 排序用的比较函数，返回 1 升序，返回 0 降序
 int cmp(const void *obj1, const void *obj2) {
   return (*(int *) obj1) < (*(int *) obj2);
@@ -31,9 +36,7 @@ int main() {
   insertArray(numbs, 0, f);
 
   // 打印结果为： 6 2 3 5 1 4
-  for (int i = 0; i < numbs->size; ++i) {
-    printf("%d ", *(int *) (numbs->items[i]));
-  }
+  printArray(numbs, print);
   printf("\n");
 
   // 删除下标为 1的元素
@@ -46,18 +49,14 @@ int main() {
   sortArray(numbs, cmp);
 
   // 打印结果为： 1 4 5 6
-  for (int i = 0; i < numbs->size; ++i) {
-    printf("%d ", *(int *) (numbs->items[i]));
-  }
+  printArray(numbs, print);
   printf("\n");
 
   // 将数组反向
   reverseArray(numbs);
 
   // 打印结果为：6 5 4 1
-  for (int i = 0; i < numbs->size; ++i) {
-    printf("%d ", *(int *) (numbs->items[i]));
-  }
+  printArray(numbs, print);
   printf("\n");
 
   // 清空数组

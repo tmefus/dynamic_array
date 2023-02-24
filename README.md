@@ -53,6 +53,9 @@ void reverseArray(Array *array);
 // 动态数组排序
 void sortArray(Array *array, int (*compare)(const void *, const void *));
 
+// 打印数组
+void printArray(Array *array, void (*print)(const void *));
+
 // 清空元素，但不释放数组，数组可以再用
 void cleanArray(Array *arr);
 

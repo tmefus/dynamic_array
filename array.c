@@ -134,6 +134,13 @@ void sortArray(Array *array, int (*compare)(const void *, const void *)) {
   quickSort(array->items, 0, array->size - 1, compare);
 }
 
+// 打印数组
+void printArray(Array *array, void (*print)(const void *)) {
+  for (int i = 0; i < array->size; ++i) {
+    print(array->items[i]);
+  }
+}
+
 // 清空元素，但不释放数组，数组可以再用
 void cleanArray(Array *array) {
   if (array == NULL) ERROR_EXIT("空指针错误")
