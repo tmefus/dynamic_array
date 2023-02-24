@@ -136,6 +136,7 @@ void sortArray(Array *array, int (*compare)(const void *, const void *)) {
 
 // 打印数组
 void printArray(Array *array, void (*print)(const void *)) {
+  if (array == NULL || compare == NULL) ERROR_EXIT("空指针错误")
   for (int i = 0; i < array->size; ++i) {
     print(array->items[i]);
   }
@@ -143,8 +144,7 @@ void printArray(Array *array, void (*print)(const void *)) {
 
 // 清空元素，但不释放数组，数组可以再用
 void cleanArray(Array *array) {
-  if (array == NULL) ERROR_EXIT("空指针错误")
-  if (array->items == NULL) ERROR_EXIT("空指针错误")
+  if (array == NULL || array->items == NULL) ERROR_EXIT("空指针错误")
   for (int i = 0; i < array->size; ++i) {
     free(array->items[i]);
     array->items[i] = NULL;
